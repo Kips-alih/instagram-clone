@@ -1,0 +1,41 @@
+{%extends 'all-photos/base.html'%}
+
+{% block content %}
+{{block.super}}
+<div class="container text-center">
+  <div class="row ">
+    {% for pic in photo %}
+      <div class="col-md-4">
+        <div>
+          <!-- Featured image -->
+          <div>
+            <img src="{{pic.image.url}}" class="img-responsive" />
+          </div>
+
+          <!-- post data -->
+          <div class="row mb-3">
+            <div class="col-4">
+              <a href="" class="text-danger">
+                {{pic.name}}
+              </a>
+            </div>
+
+            <div class="col-4 text-end">
+              <u>{{pic.pub_date}}</u>
+            </div>
+          </div>
+
+          <a href="" class="text-dark">
+            <p>
+              {{pic.caption}}
+            </p>
+          </a>
+
+          <hr />
+        </div>
+      </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %}
