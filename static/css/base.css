@@ -1,0 +1,7 @@
+h1{
+  color: green;
+}
+.navbar{
+  background-image: linear-gradient(to right, rgb(240, 183, 78),rgb(230, 166, 48),rgb(224, 49, 137),rgb(210, 110, 223),rgb(230, 159, 233),rgb(139, 93, 172),rgb(117, 71, 155));
+  color: b;
+}
