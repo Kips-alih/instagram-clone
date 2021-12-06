@@ -1,7 +1,18 @@
 h1{
   color: green;
 }
-.navbar{
-  background-image: linear-gradient(to right, rgb(240, 183, 78),rgb(230, 166, 48),rgb(224, 49, 137),rgb(210, 110, 223),rgb(230, 159, 233),rgb(139, 93, 172),rgb(117, 71, 155));
-  color: b;
+/* .navbar{
+  background-image: linear-gradient(to right, #ebeae9,rgba(236, 234, 230, 0.925),rgb(228, 224, 226),rgb(249, 246, 250),rgb(233, 231, 233),rgb(215, 214, 216),rgb(233, 230, 235));
+} */
+.account{
+  margin-top: 15px;
+  margin-left: 250px;
+  float: right;
+}
+ul{
+  text-decoration: none;
+}
+img.profile{
+  border-radius: 55%;
+  width:200px;
 }

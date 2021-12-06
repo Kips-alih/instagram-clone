@@ -12,6 +12,7 @@
   {% endif %}
 
   {% block styles %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {% bootstrap_css %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
   {% endblock %}
@@ -19,7 +20,9 @@
 </head>
 <body>
     {% include "navbar.html" %}
-    {% block content %} <h1 class='text-center'>Welcome to the Instagram Clone</h1> {%endblock%}
+    {% block content %}
+    
+    {%endblock%}
 
     {% block scripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
