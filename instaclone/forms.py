@@ -6,7 +6,7 @@ from .models import Image,Profile,Comment
 class NewImageForm(forms.ModelForm):
     class Meta:
         model = Image
-        exclude = ['user', 'pub_date','comments','likes_counter']
+        exclude = ['user', 'pub_date','comments','likes_counter','like']
         widgets = {
             'id':'form'
         }
