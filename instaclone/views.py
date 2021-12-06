@@ -1,7 +1,8 @@
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render,redirect
-from instaclone.models import Image,Profile
+from instaclone.models import Image,Profile,Likes,Comment
 from django.contrib.auth.decorators import login_required
-from .forms import NewImageForm,ProfileForm
+from .forms import CommentForm, NewImageForm,ProfileForm
 from django.http  import Http404
 
 
@@ -69,3 +70,40 @@ def image(request,image_id):
         raise Http404()
     return render(request,"all-photos/image.html", {"image":image})
 
+@login_required(login_url='/accounts/login/')
+def like_image(request):
+    user = request.user
+    if request.method == 'POST':
+        image_id = request.POST.get('image_id')
+        image =Image.objects.get(id=image_id)
+        if user in image.like.all():
+            image.like.add(user)
+        else:
+            image.like.add(user)    
+            
+        liked,created =Likes.objects.get_or_create(user=user, image_id=image_id)
+        if not created:
+            if liked.value =='Like':
+               liked.value = 'Unlike'
+        else:
+               liked.value = 'Like'
+
+        liked.save()       
+    return redirect('index')
+
+@login_required(login_url='/accounts/login/')
+def comment(request):
+    current_user=request.user
+    comment=Comment.objects.filter()
+    image=Image.objects.filter(image=id).all()
+    
+    if request.method=='POST':
+        form=CommentForm(request.POST)
+        if form.is_valid():
+            comment=form.save()
+            image.user = current_user
+            comment.save_comment()
+        return HttpResponseRedirect(request.path_info)
+    else:
+        form=CommentForm()
+    return render(request,'all-photos/comments.html',{"form":form,"comments":comment,"image":image})
