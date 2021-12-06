@@ -30,17 +30,19 @@
                 <p><strong>Caption: </strong>{{pic.caption}}</p>
                 <div class="col-md-4">
                   <p><strong>Posted on :</strong>{{pic.pub_date}}</p>
+                  <form action = "{% url 'like-image' %}"   method='POST'>
+                    {% csrf_token %}
+                    <input type="hidden" name="image_id" value="{{pic.id}}">
+                    <button class="btn btn-success" type="submit">like</button>
+                    
+                  </form>
+                  <strong>{{pic.like.all.count}} like(s)</strong>
+             
                   <span>
-                    <a class="ml-5" href=""><span >Like</span>
-                      {{image.likes_counter}}
-                        
-                    </a>
-                </span>
-                <span>
-                    <a class="ml-5" href=""><span>Comments</span>
-                        
-                    </a>
-                </span>
+                      <a class="ml-5" href="{% url 'comment' %}"><span>Comments</span>
+                          
+                      </a>
+                  </span>
                 </div>
               </div>
               <div class="modal-footer">
