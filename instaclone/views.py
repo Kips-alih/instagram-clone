@@ -21,12 +21,10 @@ def profile(request):
     image = Image.objects.filter(user_id=current_user.id)
     profile = Profile.objects.filter(user_id=current_user.id).first()
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES)
+        form = ProfileForm(request.POST, instance=request.user.profile)
         if form.is_valid():
-            image = form.save(commit=False)
-            image.user = current_user
-            image.save()
-        return redirect('profile')
+            form.save()
+        return HttpResponseRedirect(request.path_info)
 
     else:
         form = ProfileForm()
